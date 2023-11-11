@@ -1,5 +1,5 @@
 format:
-	go fmt ./...
+	go fmt internal/...
 
 build:
 	go build cmd/webserver/main.go
