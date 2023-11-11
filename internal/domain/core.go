@@ -1,7 +1,11 @@
 package domain
 
+import (
+	"time"
+)
+
 type Building struct {
-	ID         string
+	ID         string 
 	Address    string
 	Reference  string
 	Properties []Property
@@ -13,24 +17,23 @@ type Property struct {
 }
 
 type Tenant struct {
-	ID                  string
-	Name                string
-	CPF                 string
-	RG                  string
-	PersonalPhone       string
-	Role                string
-	ProfessionalAddress string
-	ProfessionalPhone   string
-	SpouseName          string
-	SpousePhone         string
+	Name                string `bson:"name",omitempty`
+	CPF                 string `bson:"_id",omitempty`
+	RG                  string `bson:"rg",omitempty`
+	PersonalPhone       string `bson:"personal_phone",omitempty`
+	Role                string `bson:"role",omitempty`
+	ProfessionalAddress string `bson:"professional_address",omitempty`
+	ProfessionalPhone   string `bson:"professional_phone",omitempty`
+	SpouseName          string `bson:"spouse_name",omitempty`
+	SpousePhone         string `bson:"spouse_phone",omitempty`
 }
 
 type RentContract struct {
 	ID             string
-	PropertyID     string
+	Property       Property
 	Value          uint
 	ExtraBills     []ExtraBill
-	TenantID       string
+	Tenant         Tenant
 	StartDate      time.Time
 	EndDate        time.Time
 	GuaranteeValue uint
@@ -40,7 +43,7 @@ type RentContract struct {
 }
 
 type ExtraBill struct {
-	ID          string
+	ID			string
 	Value       uint
 	Description string
 	PaymentType PaymentType
