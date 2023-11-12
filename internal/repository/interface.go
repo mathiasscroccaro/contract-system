@@ -17,12 +17,6 @@ type IRepository interface {
 	UpdateBuilding(building domain.Building) (domain.Building, error)
 	DeleteBuilding(buildingID string) error
 
-	ListProperties(buildingID string) ([]domain.Property, error)
-	GetProperty(propertyID string) (domain.Property, error
-	CreateProperty(property domain.Property) (domain.Property, error)
-	UpdateProperty(property domain.Property) (domain.Property, error)
-	DeleteProperty(propertyID string) error
-
 	ListActiveContracts() ([]domain.RentContract, error)
 	ListAllContracts() ([]domain.RentContract, error)
 	GetContract(contractID string) (domain.RentContract, error)
