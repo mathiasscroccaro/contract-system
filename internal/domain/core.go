@@ -5,15 +5,14 @@ import (
 )
 
 type Building struct {
-	ID         string 
-	Address    string
-	Reference  string
-	Properties []Property
+	ID         string     `bson:"_id,omitempty"`
+	Address    string     `bson:"address",omitempty`
+	Reference  string     `bson:"reference",omitempty`
+	Properties []Property `bson:"properties",omitempty`
 }
 
 type Property struct {
-	ID        string
-	Reference string
+	Reference string `bson:"reference"`
 }
 
 type Tenant struct {
@@ -29,21 +28,20 @@ type Tenant struct {
 }
 
 type RentContract struct {
-	ID             string
-	Property       Property
-	Value          uint
-	ExtraBills     []ExtraBill
-	Tenant         Tenant
-	StartDate      time.Time
-	EndDate        time.Time
-	GuaranteeValue uint
-	ExtraNotes     string
-	CreatedAt      time.Time
-	UpdatedAt      time.Time
+	BuildingOrPropertyReference string
+	Value                       uint
+	ExtraBills                  []ExtraBill
+	TenantCPF                   string
+	StartDate                   time.Time
+	EndDate                     time.Time
+	GuaranteeValue              uint
+	ExtraNotes                  string
+	CreatedAt                   time.Time
+	UpdatedAt                   time.Time
 }
 
 type ExtraBill struct {
-	ID			string
+	ID          string
 	Value       uint
 	Description string
 	PaymentType PaymentType
